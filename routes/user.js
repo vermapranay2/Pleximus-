@@ -92,4 +92,13 @@ router.get('/logout', (req, res) => {
   res.redirect('/users/login');
 });
 
+router.loggedIn = function(req, res, next)
+{
+	if (req.session.passport) { 
+			next();
+	} else {
+			res.redirect('/user/login');
+	}
+}
+
 module.exports = router;
